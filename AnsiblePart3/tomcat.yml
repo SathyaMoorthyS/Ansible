@@ -1,0 +1,38 @@
+- hosts: all
+  remote_user: ec2-user
+  become: yes
+  tasks: 
+  - name: Upgrade all packages
+    ansible.builtin.yum:
+     name: '*'
+     state: latest
+  - name: install java as tomcat dependancy
+    ansible.builtin.yum:
+     name: java
+     state: latest
+  - name: Download Tomcat from website
+    ansible.builtin.get_url:
+     url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.84/bin/apache-tomcat-9.0.84.tar.gz
+     dest: /opt
+     mode: '777'
+  - name: Unarchive a file that is already on the remote machine
+    ansible.builtin.unarchive:
+     src: /opt/apache-tomcat-9.0.84.tar.gz
+     dest: /opt
+     remote_src: yes
+  - name: Execute the command in remote shell; stdout goes to the specified file on the remote
+    ansible.builtin.shell: nohup /opt/apache-tomcat-9.0.84/bin/startup.sh & 
+  - name: Copy jinja file to remote server
+    template:
+     src: ./server.xml.j2
+     dest: /opt/apache-tomcat-9.0.84/conf/server.xml
+     mode: '777'  
+  - name: Execute the command in remote shell; stdout goes to the specified file on the remote
+    ansible.builtin.shell: nohup /opt/apache-tomcat-9.0.84/bin/shutdown.sh &
+  - name: Execute the command in remote shell; stdout goes to the specified file on the remote
+    ansible.builtin.shell: nohup /opt/apache-tomcat-9.0.84/bin/startup.sh &   \
+  - name: Source code copy for deployment
+    copy:
+     src: ./sample.war
+     dest: /opt/apache-tomcat-9.0.84/webapps/sampple.war
+     mode: '777'  

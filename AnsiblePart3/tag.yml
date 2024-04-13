@@ -1,0 +1,25 @@
+- hosts: all
+  become: yes
+  remote_user: ec2-user
+  tasks:
+    - name: going to update yum package
+      yum:
+        name: "*"
+        state: latest
+      tags:
+        - update
+
+    - name: install java 
+      yum:
+        name: java
+        state: present
+      tags:
+        - java
+    
+    - name: download tomcat
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.88/bin/apache-tomcat-8.5.88.tar.gz
+        dest: /opt
+        mode: '0777'
+      tags:
+        - tomcat

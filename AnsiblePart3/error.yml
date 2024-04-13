@@ -1,0 +1,15 @@
+- hosts: all
+  become: yes
+  remote_user: ec2-user
+  tasks:
+    - name: going to update yum package
+      yum:
+        name: greens
+        state: present
+      ignore_errors: yes
+
+    - name: install java 
+      yum:
+        name: java
+        state: present
+      ignore_errors: yes

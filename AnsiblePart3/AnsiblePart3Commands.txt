@@ -1,0 +1,130 @@
+
+
+UserData
+
+#! /bin/bash
+yum install python -y
+yum install python-pip -y
+pip install ansible
+
+
+
+ansible all -i slave -m ping
+
+
+- hosts: all
+  remote_user: ec2-user
+  become: yes
+  tasks:
+   - name: Install git
+     yum:
+       name: git
+       state: present
+       update_cache: yes
+
+
+ansible-vault encrypt second.yml
+ansible-vault decrypt second.yml
+
+ansible-vault view first.yml
+
+ansible-vault edit first.yml
+
+ansible-vault rekey first.yml
+
+
+ansible-playbook -i slave first.yml
+
+ansible-playbook -i slave first.yml --ask-vault-pass
+
+roles
+
+ansible-playbook apache.yml --syntax-check
+
+ansible-playbook -i slave apache.yml
+
+ansible-playbook -i slave multipackages.yml
+
+ansible-playbook -i slave error.yml
+
+ansible-playbook -i slave tag.yml --tags update
+
+
+    1  ansible-playbook -i slave first.yml
+    2  ansible-playbook -i slave first.yml --ask-vault-pass
+    3  ansible-galaxy init apache
+    4  ls
+    5  cd apache/
+    6  ls
+    7  sudo yum install trr
+    8  sudo yum install tree
+    9  tree
+   10  history
+   11  cd tasks/
+   12  ls
+   13  vi main.yml
+   14  ls
+   15  cd ..
+   16  ls
+   17  cd files/
+   18  ls
+   19  vi inde.html
+   20  vi index.html
+   21  history
+   22  cd ..
+   23  vi apache.yml
+   24  history
+   25      3  ansible-galaxy init apache
+   26      4  ls
+   27      5  cd apache/
+   28      6  ls
+   29      7  sudo yum install trr
+   30      8  sudo yum install tree
+   31      9  tree
+   32     10  history
+   33     11  cd tasks/
+   34     12  ls
+   35     13
+   36  clear
+   37  ansible-playbook -i slave apache.yml
+   38  ls
+   39  cd apache/
+   40  ls
+   41  cd tasks/
+   42  ls
+   43  vi main.yml
+   44  cd ..
+   45  ls
+   46  ansible-playbook -i slave apache.yml
+   47  ansible-playbook apache.yaml --syntax-check
+   48  ansible-playbook apache.yml --syntax-check
+   49  history
+   50  ls
+   51  vi apache.yml
+   52  ansible-playbook apache.yml --syntax-check
+   53  cd /apache/tasks/
+   54  ls
+   55  cd '/home/ec2-user/apache/tasks
+   56  exit
+   57  clear
+   58  ;wq!
+   59  ls
+   60  cd '/home/ec2-user/apache/
+   61  ansible --version
+   62  python --version
+   63  yum install python-pip y
+   64  sudo yum install python-pip y
+   65  sudo yum install python-pip -y
+   66  pip install ansible
+   67  ansible --version
+   68  history
+   69  ls
+   70  vi multipackages.yml
+   71  ansible-playbook -i slave multipackages.yml
+   72  vi error.yml
+   73  ansible-playbook -i slave error.yml
+   74  vi tag.yml
+   75  ansible-playbook -i slave tag.yml --tags update
+
+
+

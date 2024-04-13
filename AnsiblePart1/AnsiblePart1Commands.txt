@@ -1,0 +1,60 @@
+
+
+Ansible Coniiguaration tool
+
+Adhoc commands
+Shell SCripts
+
+Angentless
+
+Master Slave
+
+Redhat
+
+
+
+      1  pwd
+    2  python --version
+    3  sudo yum install python -y
+    4  python --version
+    5  sudo yum install python-pip -y
+    6  history
+    7  pip install ansibe
+    8  pip install ansible
+    9  ansible --version
+   10  $ ansible-config init --disabled > ansible.cfg
+   11   ansible-config init --disabled > ansible.cfg
+   12   ansible-config init --disabled -t all > ansible.cfg
+   13  ls
+   14  wget https://raw.githubusercontent.com/vijay3639/Ansible-Configuration-Files/main/ansible.cfg
+   15  ls
+   16  rm r ansible.cfg
+   17  rm -r ansible.cfg.1
+   18  ls
+   19  wget https://raw.githubusercontent.com/vijay3639/Ansible-Configuration-Files/main/ansible.cfg
+   20  ls
+   21  vi slave
+   22  ansible all -i slave -m ping
+   23  vi ansible.cfg
+   24  ansible all -i slave -m ping
+   25  history
+   26  ansible all -i slave -a "uptime"
+   27  ansible all -i slave -m yum -a "name=httpd  state=present" -b
+   28  ansible all -i slave -m yum -a "name=httpd  state=present"
+   29  ansible all -i slave -m yum -a "name=httpd  state=present" -b
+   30  ansible all - slave -m service -a "name=httpd state=started" -b
+   31  ansible all -i slave -m service -a "name=httpd state=started" -b
+   32  history
+   33  vi slave
+   34  ansible test -i slave -m ping
+   35  ansible all -i slave -m ping
+   36  ansibe dev -i slave -m yum -a "name=git,state=present" -b
+   37  ansible dev -i slave -m yum -a "name=git,state=present" -b
+   38  ansible dev -i slave -m yum -a "name=git state=present" -b
+   39  history
+   40  ansible dev -i slave -m yum -a service "name=git state=present" -b
+   41  ansible dev -i slave -m yum -a "name=git state=present" -b
+   42  history
+
+
+

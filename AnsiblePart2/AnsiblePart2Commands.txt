@@ -1,0 +1,82 @@
+
+
+
+
+/etc/ansible
+
+ 1  sudo yum install ansible
+    2  sudo yum install ansible -y
+    3  sudo yum update
+    4  sudo yum install ansible -y
+    5  sudo yum update
+    6  sudo yum install ansible -y
+    7  ansible --version
+    8  amazon-linux-extras list | grep ansible
+    9  sudo amazon-linux-extras install ansible2 -y
+   10  python --version
+   11  ansible --version
+   12  cd /etc
+   13  cd /ansible
+   14  ls
+   15  cd ansible/
+   16  ls
+   17  pwd
+   18  cd ansible.cfg hosts /home/ec2-user
+   19  cp ansible.cfg hosts /home/ec2-user
+   20  ls
+   21  cd ..
+   22  ls
+   23  cd ..
+   24  ls
+   25  pwd
+   26  cd home
+   27  cd ec2-user/.
+   28  ls
+   29  vi ansible.cfg
+   30  -name: Install the latest version of apache
+   31     yum:
+   32      name: httpd
+   33  vi index.html
+   34  lss
+   35  ls
+   36  vi ansible.cfg
+   37  vi hosts
+   38  ansible all -i hosts -m ping
+   39  pwd
+   40  history
+   41  clera
+   42  clear
+   43  pwd
+   44  ansible windows -i hosts -m win_ping
+   45  vi iis.yml
+   46  ansible-playbook -i hosts iis.yml
+   47  ls
+   48  vi iis.yml
+   49  ansible-playbook -i hosts iis.yml
+   50  history
+
+
+
+
+[windows]
+172.31.22.211
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=Admin123 
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+
+
+
+lusrmgr.msc
+
+ansible windows -i hosts -m "win_ping"
+ansible all -i hosts -m "win_ping"
+
+ansible all -i slave -m ping
+
+
+
+ansible-playbook -i hosts iis.yml
